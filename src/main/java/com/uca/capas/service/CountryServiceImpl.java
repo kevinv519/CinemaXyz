@@ -3,13 +3,17 @@ package com.uca.capas.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import com.uca.capas.domain.Country;
 import com.uca.capas.repository.CountryRepository;
 
+@Service
 public class CountryServiceImpl implements CountryService {
 
 	@Autowired
@@ -27,6 +31,7 @@ public class CountryServiceImpl implements CountryService {
 	}
 
 	@Override
+	@Transactional
 	public void save(Country country) throws DataAccessException {
 		countryRepo.save(country);
 	}

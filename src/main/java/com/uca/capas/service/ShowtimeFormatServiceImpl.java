@@ -3,6 +3,8 @@ package com.uca.capas.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Sort;
@@ -30,6 +32,7 @@ public class ShowtimeFormatServiceImpl implements ShowtimeFormatService{
 	}
 
 	@Override
+	@Transactional
 	public void save(ShowtimeFormat showtimeFormat) throws DataAccessException {
 		stRepository.save(showtimeFormat);
 	}

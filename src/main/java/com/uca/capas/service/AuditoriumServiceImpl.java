@@ -33,8 +33,7 @@ public class AuditoriumServiceImpl implements AuditoriumService {
 	@Override
 	@Transactional
 	public void save(Auditorium auditorium) throws DataAccessException {
-		aRepo.save(auditorium);
-		
+		aRepo.save(auditorium);	
 	}
 
 }
