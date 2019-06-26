@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
- <div th:replace="base :: heads(pageTitle = 'Log In')"></div>
+ <div th:replace="base :: heads(pageTitle = 'Admin Panel')"></div>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-	<button onClick="location.href='/logout'">Salir</button>
+
+	 <div th:replace="base :: navbar-out"></div>
+	 
+	 
+	 Este es ADMIN
 </body>
 </html>
