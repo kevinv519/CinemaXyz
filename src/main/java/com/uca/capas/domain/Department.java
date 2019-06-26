@@ -2,6 +2,9 @@ package com.uca.capas.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import java.util.Date;
 import java.util.List;
 
@@ -23,12 +26,15 @@ public class Department implements Serializable {
 	@Column(name="created_date", nullable=false)
 	private Date createdDate;
 
+	@NotBlank(message="El nombre del departamento es un campo obligatorio")
 	@Column(name="name_dep", nullable=false, length=60)
 	private String name;
 
+	@NotNull(message="El estado del departamento es un campo obligatorio")
 	@Column(name="status_dep", nullable=false)
 	private boolean active;
 
+	
 	@Column(name="updated_by", nullable=false, length=32)
 	private String updatedBy;
 

@@ -2,6 +2,10 @@ package com.uca.capas.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 import java.util.Date;
 import java.util.List;
 
@@ -23,18 +27,26 @@ public class Country implements Serializable {
 	@Column(name="created_date", nullable=false)
 	private Date createdDate;
 
+	@Pattern(regexp = "[A-Z]{2}$", message = "El código ISO debe tener un formato válido")
+	@NotBlank(message="El código ISO es un campo obligatorio")
 	@Column(length=2)
 	private String iso;
 
+	@Pattern(regexp = "[A-Z]{3}$", message = "El código de país debe tener un formato válido")
+	@NotBlank(message="El código de país es un campo obligatorio")
 	@Column(length=3)
 	private String iso3;
 
+	@Pattern(regexp = "[A-Z]+$", message = "El código de país debe estar en mayúsculas")
+	@NotBlank(message="El nombre es un campo obligatorio")
 	@Column(name="name_country", nullable=false, length=80)
 	private String name;
 
+	@NotBlank(message="El nombre es un campo obligatorio")
 	@Column(name="nicename_country", nullable=false, length=80)
 	private String nicename;
 
+	@NotNull(message="El estado del país es un campo obligatorio")
 	@Column(name="status_country", nullable=false)
 	private boolean active;
 

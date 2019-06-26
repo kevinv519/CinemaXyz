@@ -2,6 +2,9 @@ package com.uca.capas.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import java.util.Date;
 import java.util.List;
 
@@ -23,9 +26,11 @@ public class Municipality implements Serializable {
 	@Column(name="created_date", nullable=false)
 	private Date createdDate;
 
+	@NotBlank(message="El nombre del municipio es un campo obligatorio")
 	@Column(name="name_mun", nullable=false, length=100)
 	private String name;
 
+	@NotNull(message="El estado del municipio es un campo obligatorio")
 	@Column(name="status_mun", nullable=false)
 	private boolean active;
 

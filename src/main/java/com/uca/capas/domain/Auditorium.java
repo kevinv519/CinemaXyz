@@ -2,6 +2,11 @@ package com.uca.capas.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +22,8 @@ public class Auditorium implements Serializable {
 	@Column(name="id_aud", unique=true, nullable=false)
 	private Integer id;
 
+
+	@Positive
 	@Column(name="clean_time_min_aud")
 	private Integer cleanTimeMin;
 
@@ -27,18 +34,24 @@ public class Auditorium implements Serializable {
 	@Column(name="created_date", nullable=false)
 	private Date createdDate;
 
+	@NotBlank(message = "Las características de la sala deben ser indicadas")
 	@Column(name="description_aud", length=200)
 	private String description;
 
+	@Min(0)
 	@Column(name="extra_price_aud", nullable=false, precision=8, scale=4)
 	private BigDecimal extraPrice;
 
+	@NotBlank(message = "El nombre del empleado es un campo obligatorio")
 	@Column(name="name_aud", nullable=false, length=80)
 	private String name;
 
+	@NotNull(message = "La cantidad de asientos es un campo obligatorio")
+	@Min(15)
 	@Column(name="seats_aud", nullable=false)
 	private Integer seats;
 
+	@NotNull(message = "El estado de la sala es un campo obligatorio")
 	@Column(name="status_aud", nullable=false)
 	private boolean active;
 

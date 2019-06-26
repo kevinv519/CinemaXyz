@@ -2,6 +2,9 @@ package com.uca.capas.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +20,8 @@ public class Showtime implements Serializable {
 	@Column(name="id_st", unique=true, nullable=false)
 	private Integer id;
 
+	@Min(0)
+	@NotNull(message="La cantidad de asientos es un campo obligatorio")
 	@Column(name="availabe_seats_st", nullable=false)
 	private Integer availabeSeats;
 
@@ -27,16 +32,21 @@ public class Showtime implements Serializable {
 	@Column(name="created_date", nullable=false)
 	private Date createdDate;
 
+	@NotNull(message="Debe indicarse si la función es en inglés")
 	@Column(name="in_english", nullable=false)
 	private boolean inEnglish;
 
+	@Min(0)
+	@NotNull(message="El precio de la función debe indicarse")
 	@Column(name="price_st", nullable=false, precision=8, scale=4)
 	private BigDecimal price;
 
+	@NotNull(message="El horario de la función es un campo obligatorio")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="schedule_st", nullable=false)
 	private Date schedule;
 
+	@NotNull(message="El estado de la función es un campo obligatorio")
 	@Column(name="status_st", nullable=false)
 	private boolean active;
 

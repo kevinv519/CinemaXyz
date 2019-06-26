@@ -2,6 +2,10 @@ package com.uca.capas.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import java.util.Date;
 import java.util.List;
 
@@ -23,27 +27,35 @@ public class Film implements Serializable {
 	@Column(name="created_date", nullable=false)
 	private Date createdDate;
 
+	@NotBlank(message="El nombre de los directores es un campo obligatorio")
 	@Column(name="directors_film", length=150)
 	private String directors;
 
+	@NotBlank(message="El género de la película es un campo obligatorio")
 	@Column(name="genres_film", length=200)
 	private String genres;
 
 	@Column(name="poster_film", length=100)
 	private String posterUrl;
 
+	@NotBlank(message="El rating de la película es un campo obligatorio")
 	@Column(name="rating_film", nullable=false, length=10)
 	private String rating;
 
+	@Min(0)
+	@NotNull(message="La duración de la película es un campo obligatorio")
 	@Column(name="runtime_min_film", nullable=false)
 	private Integer runtimeMin;
 
+	@NotNull(message="El estado de la película es un campo obligatorio")
 	@Column(name="status_film", nullable=false)
 	private boolean active;
 
+	@NotBlank(message="La sinopsis de la película es un campo obligatorio")
 	@Column(name="synopsis_film", length=500)
 	private String synopsis;
 
+	@NotNull(message="El título de la película es un campo obligatorio")
 	@Column(name="title_film", nullable=false, length=100)
 	private String title;
 

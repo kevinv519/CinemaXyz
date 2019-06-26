@@ -2,6 +2,10 @@ package com.uca.capas.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -23,19 +27,25 @@ public class User implements Serializable {
 	@Column(name="id_u", unique=true, nullable=false)
 	private Integer id;
 
+	@Min(0)
+	@NotNull(message="El saldo de la cuenta es un campo obligatorio")
 	@Column(name="account_balance", nullable=false, precision=10, scale=4)
 	private BigDecimal accountBalance;
 
+	@NotBlank(message="La dirección es un campo obligatorio")
 	@Column(name="address_u", length=256)
 	private String address;
 
+	@NotNull(message="Este es un campo obligatorio")
 	@Column(name="approved_by", length=32)
 	private String approvedBy;
 
+	@NotNull(message="Debe indicarse en qué fecha fue aprobado")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="approved_date")
 	private Date approvedDate;
 
+	@NotNull(message="La fecha de nacimiento es un campo obligatorio")
 	@Temporal(TemporalType.DATE)
 	@Column(name="birthdate_u", nullable=false)
 	private Date birthdate;
@@ -44,21 +54,27 @@ public class User implements Serializable {
 	@Column(name="created_date", nullable=false)
 	private Date createdDate;
 
+	@NotBlank(message="El correo es un campo obligatorio")
 	@Column(name="email_u", nullable=false, length=256)
 	private String email;
 
+	@NotBlank(message="El nombre es un campo obligatorio")
 	@Column(name="firstname_u", nullable=false, length=50)
 	private String firstname;
 
+	@NotNull(message="Debe indicarse el estado del usuario")
 	@Column(name="is_active_u", nullable=false)
 	private Integer status;
 
+	@NotNull(message="Debe indicarse si el usuario posee privilegios de administrador")
 	@Column(name="is_admin_u", nullable=false)
 	private boolean isAdmin;
 
+	@NotBlank(message="El apellido es un campo obligatorio")
 	@Column(name="lastname_u", nullable=false, length=50)
 	private String lastname;
 
+	@NotBlank(message="La contraseña es un campo obligatorio")
 	@Column(name="password_u", nullable=false, length=64)
 	private String password;
 
@@ -69,6 +85,7 @@ public class User implements Serializable {
 	@Column(name="updated_date", nullable=false)
 	private Date updatedDate;
 
+	@NotBlank(message="El nombre de usuario es un campo obligatorio")
 	@Column(name="username_u", nullable=false, length=32)
 	private String username;
 

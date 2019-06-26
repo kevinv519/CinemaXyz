@@ -2,6 +2,10 @@ package com.uca.capas.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -24,12 +28,16 @@ public class ShowtimeFormat implements Serializable {
 	@Column(name="created_date", nullable=false)
 	private Date createdDate;
 
+	@NotBlank(message="El nombre es un campo obligatorio")
 	@Column(name="name_stf", nullable=false, length=50)
 	private String name;
 
+	@Min(0)
+	@NotNull(message="El precio es un campo obligatorio")
 	@Column(name="price_stf", nullable=false, precision=8, scale=4)
 	private BigDecimal price;
 
+	@NotNull(message="El estado es un campo obligatorio")
 	@Column(name="status_stf", nullable=false)
 	private boolean active;
 

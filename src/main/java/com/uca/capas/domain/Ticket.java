@@ -2,6 +2,10 @@ package com.uca.capas.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -16,19 +20,28 @@ public class Ticket implements Serializable {
 	@Column(name="id_ticket", unique=true, nullable=false)
 	private Integer id;
 
+	@Min(0)
+	@NotNull(message="El total es un campo obligatorio")
 	@Column(name="net_total_ticket", nullable=false, precision=10, scale=4)
 	private BigDecimal netTotal;
 
+	@Min(0)
+	@NotNull(message="El pago la película es un campo obligatorio")
 	@Column(name="payment_amount_ticket", nullable=false, precision=10, scale=4)
 	private BigDecimal paymentAmount;
 
+	@NotNull(message="La fecha de compra es un campo obligatorio")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="purchased_date_ticket", nullable=false)
 	private Date purchasedDate;
 
+	@Positive
+	@NotNull(message="La cantidad de asientos reservados es un campo obligatorio")
 	@Column(name="reserved_seats_ticket")
 	private Integer reservedSeats;
 
+	@Min(0)
+	@NotNull(message="El subtotal es un campo obligatorio")
 	@Column(name="subtotal_ticket", nullable=false, precision=10, scale=4)
 	private BigDecimal subtotal;
 
