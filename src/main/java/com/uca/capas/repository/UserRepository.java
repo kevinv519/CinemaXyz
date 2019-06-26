@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.uca.capas.domain.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
-
+	public User findFirstByUsernameAndPassword(String username, String password);
 }
