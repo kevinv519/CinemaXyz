@@ -65,7 +65,7 @@ public class MainController {
 	@GetMapping("/login")
 	String home(Model model, ModelMap map, HttpSession session) {
 		if (session.getAttribute(ATT_LOG) != null && (boolean)session.getAttribute(ATT_LOG)) {
-			return "redirect:/stores";
+			return "redirect:/";
 		}
 		model.mergeAttributes(map);
 		return "login";
@@ -82,9 +82,13 @@ public class MainController {
 				if (user != null) {
 					session.setAttribute(ATT_LOG, true);
 					if(user.getIsAdmin() == true) {
+						// Want to send the Session Info to validate that the admin is logged in
+						//model.addAttribute("session", session);
 						return "redirect:/control-admin";
 					}
 					else {
+						// Want to send the Session Info to validate that the user is logged in
+						//model.addAttribute("session", session);
 						return "redirect:/control-user";
 					}
 				}
@@ -104,16 +108,21 @@ public class MainController {
 	}
 
 	@GetMapping("/control-admin")
-	String control_adm(){
+	String control_adm(HttpSession session){
+		// Tried to receive the Session Info to validate that the admin is logged in
+		if (session.getAttribute(ATT_LOG) != null && (boolean)session.getAttribute(ATT_LOG)) {
+			return "redirect:/login";
+		}
 		return "control-admin";		
 	}
 	
 	@GetMapping("/control-user")
-	String control_usr(){
+	String control_usr(HttpSession session){
+		// Tried to receive the Session Info to validate that the user is logged in
+		if (session.getAttribute(ATT_LOG) != null && (boolean)session.getAttribute(ATT_LOG)) {
+			return "redirect:/login";
+		}
 		return "control-user";		
 	}
-	
-	
-	
 	
 }
