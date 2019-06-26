@@ -1,12 +1,16 @@
 body {
-  background: #C9EAF3;
-  background: -webkit-linear-gradient(right, #B8E2EF, #DBF0F7);
-  background: -moz-linear-gradient(right, #B8E2EF, #DBF0F7);
-  background: -o-linear-gradient(right, #B8E2EF, #DBF0F7);
-  background: linear-gradient(to left, #B8E2EF, #DBF0F7);
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.bg-seat {
+  background-image: url("../imgs/login-bg.jpg");
+}
+
+.bg-popcorn {
+  background-image: url("../imgs/popcorn-bg.jpg");
 }
 
 form {	
