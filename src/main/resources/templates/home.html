@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="base :: heads(pageTitle = 'Inicio')"></div>
+  <div th:replace="base :: heads(pageTitle = 'Inicio')"></div>
 </head>
 
 <body>
-    <div class="container mt-4">
-        <h1>Welcome to <span th:text="#{appName}"></span></h1>
+  <div th:replace="base :: navbar"></div>
+  
+  <div class="container my-4">
+    <div class="row">
+      <th:block th:each="film, row: ${films}">
+        <div class="col-12 col-md-3 mt-3 mt-md-0">
+          <div class="card h-100 rounded-0">
+            <a th:href="@{/movies/{id}(id=${film.id})}">
+              <img th:src="${film.posterUrl}" alt="" class="card-img-top">
+            </a>
+            <div class="card-body">
+              <a th:href="@{/movies/{id}(id=${film.id})}">
+                <h4 th:text="${film.title}" class="card-title">Titulo por defecto</h4>
+              </a>
+              <p class="card-text">
+                <span th:text="|${film.runtimeMin} min|"></span> <span class="badge badge-secondary align-top" th:text="${film.rating}">N/A</span>
+              </p>
+            </div>
+          </div>
+          
+        </div>
+        <div class="w-100 mt-3" th:if="${row.count % 4 == 0}"></div>
+      </th:block>
     </div>
+  
+</div>
 </body>
 </html>
