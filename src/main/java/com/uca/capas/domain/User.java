@@ -10,6 +10,12 @@ import java.util.List;
 @Table(name="users")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
+	public static final String SESSION_ATT_LOG = "loggedUser";
+	
+	public static final Integer DISABLED = 0;
+	public static final Integer ENABLED = 1;
+	public static final Integer PENDING = 2;
+	public static final Integer LOGGED_IN = 3;
 
 	@Id
 	@SequenceGenerator(name="USERS_ID_GENERATOR", sequenceName="USERS_ID_U_SEQ")
@@ -301,4 +307,14 @@ public class User implements Serializable {
 		this.municipality = municipality;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", accountBalance=" + accountBalance + ", address=" + address + ", approvedBy="
+				+ approvedBy + ", approvedDate=" + approvedDate + ", birthdate=" + birthdate + ", createdDate="
+				+ createdDate + ", email=" + email + ", firstname=" + firstname + ", status=" + status + ", isAdmin="
+				+ isAdmin + ", lastname=" + lastname + ", password=" + password + ", updatedBy=" + updatedBy
+				+ ", updatedDate=" + updatedDate + ", username=" + username + "]";
+	}
+
+	
 }

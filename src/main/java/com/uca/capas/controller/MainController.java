@@ -9,7 +9,9 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.uca.capas.domain.User;
 import com.uca.capas.service.FilmService;
 
 @Controller
@@ -23,7 +25,10 @@ public class MainController {
 	FilmService filmService;
 
 	@GetMapping("/")
-	String home(Model model) {
+	String home(Model model, @SessionAttribute(name = User.SESSION_ATT_LOG, required = false) User u) {
+		if (u != null) {
+			log.info(u.toString());
+		}
 		try {
 			model.addAttribute("films", filmService.getAvailableMovies());
 		} catch (Exception e) {
@@ -37,7 +42,10 @@ public class MainController {
 	}
 	
 	@GetMapping("/login")
-	String loginForm() {
+	String loginForm(@SessionAttribute(name = User.SESSION_ATT_LOG, required = false) User loggedUser) {
+		if (loggedUser != null) {
+			return "redirect:/";
+		}
 		return "login";
 	}
 }

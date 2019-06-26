@@ -13,16 +13,21 @@
                         <h4 class="card-title text-center">Inicio de Sesión</h4>
                         <form action="#" th:action="@{/user/validate}" method="POST" autocomplete="off">
                             <div class="form-group">
-                                <input type="text" id="username" name="username" class="form-control" placeholder="Usuario"/>
+                                <input type="text" id="usern" name="usern" class="form-control" placeholder="Usuario"/>
                             </div>
                             <div class="form-group">
-                                <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña"/>
+                                <input type="password" id="pass" name="pass" class="form-control" placeholder="Contraseña"/>
                             </div>
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-outline-success">Iniciar sesión</button>
-                                <a href="javascript:history.back()" class="btn btn-outline-secondary">Regresar</a>
+                                <button type="submit" class="btn btn-outline-success" th:text="#{navbar.option.login}">Login</button>
+                                <a th:href="@{/}" class="btn btn-outline-secondary">Regresar a Inicio</a>
                             </div>
                         </form>
+                        <div th:if="${error != null}">
+                            <div class="alert alert-danger mt-2" th:text="${error}">
+                                Mensaje
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
