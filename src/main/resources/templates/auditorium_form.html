@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <div th:replace="base :: heads(pageTitle = 'Salas')"></div>
+</head>
+
+<body>
+
+  <form class="form-group mt-5 rounded" th:action="@{/auditoria/save}" th:object="${auditorium}" method="post">
+	
+	<input type="hidden" th:field="*{id}" />
+	
+	<label for="name" >Nombre</label>
+	<input class="form-control" type="text" th:field="*{name}" id="name" name="name" autofocus="autofocus"/>
+	<br/>
+	
+	<label for="description" >Descripción</label>
+	<input class="form-control" type="text" th:field="*{description}" id="description" name="description" />
+	<br/>
+	
+	<label for="seats" >Cantidad de asientos</label>
+	<input class="form-control" type="text" th:field="*{seats}" id="seats" name="seats" />
+	<br/>
+	
+	<label for="extraPrice" >Precio extra</label>
+	<input class="form-control" type="text" th:field="*{extraPrice}" id="extraPrice" name="extraPrice" />
+	<br/>
+	
+	<label for="cleanTimeMin" >Tiempo de limpieza (min)</label>
+	<input class="form-control" type="text" th:field="*{cleanTimeMin}" id="cleanTimeMin" name="cleanTimeMin" />
+	<br/>
+	
+	<label for="active">Estado</label>
+	<input class="form-control" type="text" th:field="*{active}" id="active" name="active" />
+	<br/>
+	
+	
+	<button type="submit" class="btn btn-outline-primary"> <i class="fa fa-save"></i> Guardar</button>
+	<br/>
+	<br/>
+	
+	<a class="btn btn-outline-primary"> <i class="fa fa-arrow-left"></i> Regresar</a>
+	
+  </form>  
+
+</body>
+</html>

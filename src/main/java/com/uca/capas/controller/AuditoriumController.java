@@ -6,21 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.uca.capas.domain.Country;
-import com.uca.capas.service.CountryService;
+import com.uca.capas.domain.Auditorium;
+import com.uca.capas.service.AuditoriumService;
 
 @Controller
-@RequestMapping("/countries")
-public class CountryController {
-
+@RequestMapping("/auditoria")
+public class AuditoriumController {
 	@Autowired
-	CountryService countryService;
+	AuditoriumService auditoriumService;
 	
 	@GetMapping("/add")
 	String addCountry(Model model) {
-		model.addAttribute("country", new Country());
-		return "country_form";
+		model.addAttribute("auditorium", new Auditorium());
+		return "auditorium_form";
 	}
-	
-	
 }

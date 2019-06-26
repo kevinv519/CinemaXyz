@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  
+ <div th:replace="base :: heads(pageTitle = 'Países')"></div>
 </head>
 
 <body>
 
-  <form th:action="@{/countries/save}" th:object="${country}" method="post">
+  <form class="form-group mt-5 rounded" th:action="@{/countries/save}" th:object="${country}" method="post">
+	
+	<input type="hidden" th:field="*{id}" />
 	
 	<label for="iso" >ISO</label>
-	<input type="text" th:field="*{iso}" id="iso" name="iso" autofocus="autofocus"/>
+	<input class="form-control" type="text" th:field="*{iso}" id="iso" name="iso" autofocus="autofocus"/>
 	<br/>
 	
 	<label for="name" >Nombre</label>
-	<input type="text" th:field="*{name}" id="name" name="name" />
+	<input class="form-control" type="text" th:field="*{name}" id="name" name="name" />
 	<br/>
 	
 	<label for="nicename" >Nicename</label>
-	<input type="text" th:field="*{nicename}" id="nicename" name="nicename" />
+	<input class="form-control" type="text" th:field="*{nicename}" id="nicename" name="nicename" />
 	<br/>
 	
 	<label for="iso3" >ISO3</label>
-	<input type="text" th:field="*{iso3}" id="iso3" name="iso3" />
+	<input class="form-control" type="text" th:field="*{iso3}" id="iso3" name="iso3" />
 	<br/>
 	
-	<input type="submit" value = "Guardar">
+	<button type="submit" class="btn btn-outline-primary"> <i class="fa fa-save"></i> Guardar</button>
 	<br/>
+	<br/>
+	
+	<a class="btn btn-outline-primary"> <i class="fa fa-arrow-left"></i> Regresar</a>
 	
   </form>  
 
