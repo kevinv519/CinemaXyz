@@ -9,4 +9,6 @@ import com.uca.capas.domain.Film;
 public interface FilmService {
 	
 	List<Film> getAvailableMovies() throws DataAccessException;
+	
+	List<Film> getAllMovies() throws DataAccessException;
 }

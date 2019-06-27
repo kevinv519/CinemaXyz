@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.uca.capas.domain.Film;
@@ -18,6 +19,11 @@ public class FilmServiceImpl implements FilmService {
 	@Override
 	public List<Film> getAvailableMovies() throws DataAccessException {
 		return filmRepo.findByActiveOrderByTitleAsc(true);
+	}
+
+	@Override
+	public List<Film> getAllMovies() throws DataAccessException {
+		return filmRepo.findAll(Sort.by("active", "title"));
 	}
 
 }

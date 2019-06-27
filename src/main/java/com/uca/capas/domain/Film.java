@@ -209,5 +209,13 @@ public class Film implements Serializable {
 
 		return showtime;
 	}
+	
+	public String getActiveDelegate() {
+		return active? "Activo" : "Inactivo";
+	}
+	
+	public String getRuntimeDelegate() {
+		return String.format("%d min", runtimeMin);
+	}
 
 }

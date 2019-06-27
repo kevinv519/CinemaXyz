@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head_admin :: headsadm(pageTitle = 'Lista de películas')"></div>
+</head>
+
+<body>
+    <div class="d-flex">
+        <section th:replace="fragments/sidebar :: sidebar(active = 1)"></section>
+        <section id="page-content-wrapper">
+            <div class="container-fluid px-md-5 pt-md-4">
+                <div class="row mt-5">
+                    <div class="col">
+                        <h1>Películas</h1>
+                    </div>
+                    <div class="col-auto">
+                        <a th:href="@{/admin/movies/add}" class="btn btn-outline-primary">
+                            <i class="fas fa-plus"></i> Película
+                        </a>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <caption>Cantidad de registros: <span th:text="${#lists.size(films)}"></span></caption>
+                        <thead>
+                            <tr class="table-info">
+                                <th>Código</th>
+                                <th>Título</th>
+                                <th>Duración (min)</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="film : ${films}">
+                                <td th:text="${film.id}" class="align-middle">Id</td>
+                                <td th:text="${film.title}" class="align-middle">Titulo</td>
+                                <td th:text="${film.runtimeDelegate}" class="align-middle">Duración</td>
+                                <td th:text="${film.activeDelegate}" class="align-middle">Estado</td>
+                                <td>
+                                    <a th:href="@{/admin/movies/edit/{id}(id=${film.id})}" class="btn btn-outline-info" title="Editar">
+                                        <i class="far fa-edit"></i> Editar
+                                    </a>
+                                    <a th:href="@{/admin/movies/set-status/{id}(id=${film.id})}" class="btn btn-outline-success" title="Eliminar">
+                                        <i class="far fa-check-square"></i> <span th:text="${film.active}? 'Desactivar' : 'Activar'"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
