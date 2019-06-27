@@ -44,7 +44,7 @@ public class MainController {
 	@GetMapping("/login")
 	String loginForm(@SessionAttribute(name = User.SESSION_ATT_LOG, required = false) User loggedUser) {
 		if (loggedUser != null) {
-			return "redirect:/";
+			return "redirect:/admin/movies";
 		}
 		return "login";
 	}
