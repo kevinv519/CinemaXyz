@@ -15,7 +15,7 @@ public class Film implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="FILM_ID_GENERATOR", sequenceName="FILM_ID_FILM_SEQ")
+	@SequenceGenerator(name="FILM_ID_GENERATOR", sequenceName="FILM_ID_FILM_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="FILM_ID_GENERATOR")
 	@Column(name="id_film", unique=true, nullable=false)
 	private Integer id;

@@ -17,7 +17,7 @@ public class Auditorium implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="AUDITORIUM_ID_GENERATOR", sequenceName="AUDITORIUM_ID_AUD_SEQ")
+	@SequenceGenerator(name="AUDITORIUM_ID_GENERATOR", sequenceName="AUDITORIUM_ID_AUD_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="AUDITORIUM_ID_GENERATOR")
 	@Column(name="id_aud", unique=true, nullable=false)
 	private Integer id;

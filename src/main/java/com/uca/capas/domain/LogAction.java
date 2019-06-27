@@ -9,7 +9,7 @@ public class LogAction implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="LOG_ACTIONS_ID_GENERATOR", sequenceName="LOG_ACTIONS_ID_LOG_SEQ")
+	@SequenceGenerator(name="LOG_ACTIONS_ID_GENERATOR", sequenceName="LOG_ACTIONS_ID_LOG_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="LOG_ACTIONS_ID_GENERATOR")
 	@Column(name="id_log", unique=true, nullable=false)
 	private Integer id;

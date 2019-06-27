@@ -16,7 +16,7 @@ public class ShowtimeFormat implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="SHOWTIME_FORMAT_ID_GENERATOR", sequenceName="SHOWTIME_FORMAT_ID_STF_SEQ")
+	@SequenceGenerator(name="SHOWTIME_FORMAT_ID_GENERATOR", sequenceName="SHOWTIME_FORMAT_ID_STF_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SHOWTIME_FORMAT_ID_GENERATOR")
 	@Column(name="id_stf", unique=true, nullable=false)
 	private Integer id;
