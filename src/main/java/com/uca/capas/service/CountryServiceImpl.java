@@ -1,5 +1,6 @@
 package com.uca.capas.service;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +33,16 @@ public class CountryServiceImpl implements CountryService {
 
 	@Override
 	@Transactional
-	public void save(Country country) throws DataAccessException {
+	public void save(Country country, String userName) throws DataAccessException {
+		
+		if(country.getId() == null) {
+			country.setCreatedDate(Calendar.getInstance().getTime());
+			country.setCreatedBy(userName);
+		}
+		
+		country.setUpdatedDate(Calendar.getInstance().getTime());
+		country.setUpdatedBy(userName);
+		
 		countryRepo.save(country);
 	}
 
