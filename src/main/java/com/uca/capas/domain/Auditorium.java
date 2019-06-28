@@ -22,7 +22,6 @@ public class Auditorium implements Serializable {
 	@Column(name="id_aud", unique=true, nullable=false)
 	private Integer id;
 
-
 	@Positive
 	@Column(name="clean_time_min_aud")
 	private Integer cleanTimeMin;
@@ -179,4 +178,7 @@ public class Auditorium implements Serializable {
 		return showtime;
 	}
 
+	public String getActiveDelegate() {
+		return active? "Disponible" : "No disponible";
+	}
 }

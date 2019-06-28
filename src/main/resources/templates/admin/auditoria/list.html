@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head_admin :: headsadm(pageTitle = 'Lista de salas')"></div>
+</head>
+
+<body>
+    <div class="d-flex">
+        <section th:replace="fragments/sidebar :: sidebar(active = 2)"></section>
+        <section id="page-content-wrapper">
+            <div class="container-fluid px-md-5 pt-md-4">
+                <div class="row mt-5">
+                    <div class="col">
+                        <h1>Salas</h1>
+                    </div>
+                    <div class="col-auto">
+                        <a th:href="@{/admin/auditoria/add}" class="btn btn-outline-primary">
+                            <i class="fas fa-plus"></i> Sala
+                        </a>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <caption>Cantidad de registros: <span th:text="${#lists.size(auditoria)}"></span></caption>
+                        <thead>
+                            <tr class="table-info">
+                                <th>Código</th>
+                                <th>Nombre</th>
+                                <th>Cantidad de asientos </th>
+                                <th>Estado</th>
+                                <th>Descripción</th>
+                                <th>Tiempo de limpieza</th>
+                                <th>Costo extra</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="auditorium : ${auditoria}">
+                                <td th:text="${auditorium.id}" class="align-middle"></td>
+                                <td th:text="${auditorium.seats}" class="align-middle"></td>
+                                <td th:text="${auditorium.name}" class="align-middle"></td>
+                                <td th:text="${auditorium.activeDelegate}" class="align-middle"></td>
+                                <td th:text="${auditorium.description}" class="align-middle"></td>
+                                <td th:text="${auditorium.cleanTimeMin}" class="align-middle"></td>
+                                <td th:text="${auditorium.extraPrice}" class="align-middle"></td>
+                                <td>
+                                    <a th:href="@{/admin/movies/edit/{id}(id=${auditorium.id})}" class="btn btn-outline-info" title="Editar">
+                                        <i class="far fa-edit"></i> Editar
+                                    </a>
+                                    <a th:href="@{/admin/auditoria/set-status/{id}(id=${auditorium.id})}" class="btn btn-outline-success" title="Eliminar">
+                                        <i class="far fa-check-square"></i> <span th:text="${auditorium.active}? 'Desactivar' : 'Activar'"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
