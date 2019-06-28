@@ -6,4 +6,6 @@ import com.uca.capas.domain.Showtime;
 
 public interface ShowtimeRepository extends JpaRepository<Showtime, Integer> {
 
+	Showtime getOneByfilm_id(Integer film_id);
+
 }

@@ -9,8 +9,10 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.uca.capas.domain.Ticket;
 import com.uca.capas.domain.User;
 import com.uca.capas.service.FilmService;
 
@@ -47,5 +49,18 @@ public class MainController {
 			return "redirect:/admin/movies";
 		}
 		return "login";
+	}
+	
+	@GetMapping("/movies/{id}")
+	String movies(@PathVariable("id") Integer id, Model model) {
+		Ticket ticket = new Ticket();
+		try {
+			model.addAttribute("film", filmService.getMovieWithShowtime(id));
+			model.addAttribute("ticket", ticket);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "/movies";
+		
 	}
 }

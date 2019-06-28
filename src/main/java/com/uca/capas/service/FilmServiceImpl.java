@@ -26,4 +26,14 @@ public class FilmServiceImpl implements FilmService {
 		return filmRepo.findAll(Sort.by("active", "title"));
 	}
 
+	@Override
+	public Film getMovie(Integer id) throws DataAccessException {
+		return filmRepo.getOne(id);
+	}
+
+	@Override
+	public Film getMovieWithShowtime(Integer id) throws DataAccessException {
+		return filmRepo.fetchFilmWithShowtimes(id);
+	}
+
 }

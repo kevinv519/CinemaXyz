@@ -51,7 +51,11 @@ public class UserController {
 						ra.addFlashAttribute("error", messageSource.getMessage("login.error.logged-in", new Object[]{}, Locale.getDefault()));
 					} else {
 						session.setAttribute(User.SESSION_ATT_LOG, user);
+						if(user.getIsAdmin()) {
 						return "redirect:/admin/movies";
+						}else {
+							return "redirect:/";
+						}
 					}
 					return "redirect:/login";
 				}

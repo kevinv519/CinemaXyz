@@ -11,4 +11,6 @@ public interface FilmService {
 	List<Film> getAvailableMovies() throws DataAccessException;
 	
 	List<Film> getAllMovies() throws DataAccessException;
+	Film getMovie(Integer id) throws DataAccessException;
+	Film getMovieWithShowtime(Integer id) throws DataAccessException;
 }
