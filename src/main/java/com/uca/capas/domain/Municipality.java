@@ -14,7 +14,7 @@ public class Municipality implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="MUNICIPALITY_ID_GENERATOR", sequenceName="MUNICIPALITY_ID_MUN_SEQ")
+	@SequenceGenerator(name="MUNICIPALITY_ID_GENERATOR", sequenceName="MUNICIPALITY_ID_MUN_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MUNICIPALITY_ID_GENERATOR")
 	@Column(name="id_mun", unique=true, nullable=false)
 	private Integer id;

@@ -12,5 +12,5 @@ public interface AuditoriumService {
 	
 	Auditorium getAuditorium(Integer code) throws DataAccessException;
 	
-	void save(Auditorium auditorium) throws DataAccessException;
+	void save(Auditorium auditorium, String username) throws DataAccessException;
 }

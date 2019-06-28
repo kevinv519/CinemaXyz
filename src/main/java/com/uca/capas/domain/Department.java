@@ -14,7 +14,7 @@ public class Department implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="DEPARTMENT_ID_GENERATOR", sequenceName="DEPARTMENT_ID_DEP_SEQ")
+	@SequenceGenerator(name="DEPARTMENT_ID_GENERATOR", sequenceName="DEPARTMENT_ID_DEP_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="DEPARTMENT_ID_GENERATOR")
 	@Column(name="id_dep", unique=true, nullable=false)
 	private Integer id;

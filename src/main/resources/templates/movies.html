@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="base :: heads(pageTitle = 'Cliente')"></div>
+</head>
+<body>
+	<div th:replace="base :: navbar"></div>
+	
+	<div class="container">
+		<div class="col-12 col-md-3 mt-3 mt-md-0">
+			<img th:src="${film.posterUrl}" alt="" class="card-img-top">	
+		</div>
+		<div class="col-12 col-md-6 mtx-3 mt-md-0">
+			<p>Titulo: <span th:text="|${film.title}|"></span></p>
+			<p>Director: <span th:text="|${film.directors}|"></span></p>
+			<p>Lanzamiento: <span th:text="|${film.createdDate}|"></span></p>
+			<p>Genero: <span th:text="|${film.genres}|"></span></p>
+			<p>Rating: <span th:text="|${film.rating}|"></span></p>
+			<p>Duraci&oacute;n: <span th:text="|${film.runtimeMin} min|"></span></p>
+			<p>Sinopsis: <span th:text="|${film.synopsis}|"></span></p>
+			<p>Horarios: 
+				<th:block th:each="showtime : ${film.showtimes}">
+					<span th:text="|${showtime.schedule}|"></span>
+				</th:forEach>
+			</p>
+		</div>	
+	</div>
+	
+	<br>
+	
+	<h1 th:text="#{form.tickets.title}" ></h1>
+	<!-- Formulario para comprar entradas -->
+	<!--   <form th:action="@{/algo}" th:object="${/alguno}" method="post">	
+	    
+	      <label th.text="#{form.tickets.auditorium}"></label>
+	      <select name="auditorium">
+	      	<th:block th:each="auditorium : $auditoriums">
+	      		<option value="${auditorium.id}"><span th:text="$auditorium."></span></option>
+	      	</th:block>
+	      </select>
+	  </form>	-->
+	 <!--Fin de form -->
+	
+</body>
+</html>

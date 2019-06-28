@@ -6,8 +6,15 @@
 
 <body>
 
+	<div class="alert" th:if="${message != null}">
+  				<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  				<strong th:text="${message}"> </strong> 
+	</div>
+
   <form class="form-group mt-5 rounded" th:action="@{/countries/save}" th:object="${country}" method="post">
 	
+	<h2 th:text=" | ${action} país|  "> </h2>
+		
 	<input type="hidden" th:field="*{id}" />
 	
 	<label for="iso" >ISO</label>

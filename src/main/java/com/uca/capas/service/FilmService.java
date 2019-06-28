@@ -13,4 +13,8 @@ public interface FilmService {
 	List<Film> getAllMovies() throws DataAccessException;
 	
 	void save(Film film, String username) throws DataAccessException;
+	
+	Film getMovie(Integer id) throws DataAccessException;
+
+	Film getMovieWithShowtime(Integer id) throws DataAccessException;
 }

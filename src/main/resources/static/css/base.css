@@ -63,3 +63,8 @@ body {
 .form .register-form {
   display: none;
 }
+alert {
+  padding: 20px;
+  background-color: #8678E9;
+  color: white;
+}

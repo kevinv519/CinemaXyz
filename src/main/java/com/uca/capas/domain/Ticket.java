@@ -15,7 +15,7 @@ public class Ticket implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TICKET_ID_GENERATOR", sequenceName="TICKET_ID_TICKET_SEQ")
+	@SequenceGenerator(name="TICKET_ID_GENERATOR", sequenceName="TICKET_ID_TICKET_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TICKET_ID_GENERATOR")
 	@Column(name="id_ticket", unique=true, nullable=false)
 	private Integer id;

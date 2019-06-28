@@ -1,5 +1,6 @@
 package com.uca.capas.service;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +33,17 @@ public class AuditoriumServiceImpl implements AuditoriumService {
 
 	@Override
 	@Transactional
-	public void save(Auditorium auditorium) throws DataAccessException {
+	public void save(Auditorium auditorium, String userName) throws DataAccessException {
+		
+		if(auditorium.getId() == null) {
+			auditorium.setCreatedDate(Calendar.getInstance().getTime());
+			auditorium.setCreatedBy(userName);
+		}
+		
+		auditorium.setUpdatedDate(Calendar.getInstance().getTime());
+		auditorium.setUpdatedBy(userName);
+
+		
 		aRepo.save(auditorium);	
 	}
 
