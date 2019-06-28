@@ -4,6 +4,10 @@ body {
     overflow: hidden;
 }
 
+textarea {
+    resize: none;
+}
+
 #sidebar {
     width: 15rem;
     height: 100vh;

@@ -41,7 +41,7 @@
                                     <a th:href="@{/admin/movies/edit/{id}(id=${film.id})}" class="btn btn-outline-info" title="Editar">
                                         <i class="far fa-edit"></i> Editar
                                     </a>
-                                    <a th:href="@{/admin/movies/set-status/{id}(id=${film.id})}" class="btn btn-outline-success" title="Eliminar">
+                                    <a th:href="@{/admin/movies/set-status/{id}(id=${film.id})}" class="btn" th:classappend="${film.active}? 'btn-outline-danger': 'btn-outline-success'" title="Eliminar">
                                         <i class="far fa-check-square"></i> <span th:text="${film.active}? 'Desactivar' : 'Activar'"></span>
                                     </a>
                                 </td>

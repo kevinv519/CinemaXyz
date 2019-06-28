@@ -15,7 +15,7 @@ public class Film implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="FILM_ID_GENERATOR", sequenceName="FILM_ID_FILM_SEQ")
+	@SequenceGenerator(name="FILM_ID_GENERATOR", sequenceName="FILM_ID_FILM_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="FILM_ID_GENERATOR")
 	@Column(name="id_film", unique=true, nullable=false)
 	private Integer id;
@@ -27,11 +27,9 @@ public class Film implements Serializable {
 	@Column(name="created_date", nullable=false)
 	private Date createdDate;
 
-	@NotBlank(message="El nombre de los directores es un campo obligatorio")
 	@Column(name="directors_film", length=150)
 	private String directors;
 
-	@NotBlank(message="El género de la película es un campo obligatorio")
 	@Column(name="genres_film", length=200)
 	private String genres;
 
@@ -51,11 +49,10 @@ public class Film implements Serializable {
 	@Column(name="status_film", nullable=false)
 	private boolean active;
 
-	@NotBlank(message="La sinopsis de la película es un campo obligatorio")
 	@Column(name="synopsis_film", length=500)
 	private String synopsis;
 
-	@NotNull(message="El título de la película es un campo obligatorio")
+	@NotBlank(message="El título de la película es un campo obligatorio")
 	@Column(name="title_film", nullable=false, length=100)
 	private String title;
 

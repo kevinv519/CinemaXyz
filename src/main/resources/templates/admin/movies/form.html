@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head_admin :: headsadm(pageTitle = ${action} + ' película')"></div>
+</head>
+
+<body>
+    <div class="d-flex">
+        <section th:replace="fragments/sidebar :: sidebar(active = 1)"></section>
+        <section id="page-content-wrapper">
+            <div class="container-fluid px-5 py-4">
+                <div class="container">
+                    <div th:if="${success != null}">
+                        <div class="alert mb-2" th:classappend="${success}? alert-success : alert-warning" th:text="${message}">
+                            Mensaje
+                        </div>
+                    </div>
+                    <h1 th:text="|${action} película|" class=" mt-4 mb-3"></h1>
+                    <form th:action="@{/admin/movies/save}" th:object="${film}" method="POST">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="title">Título:</label>
+                                    <input type="text" th:field="*{title}" class="form-control" required>
+                                    <small th:if="@{#fields.hasErrors('title')}" th:errors="*{title}" class="form-text text-danger"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="directors">Directores:</label>
+                                    <input type="text" th:field="*{directors}" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="genres">Géneros:</label>
+                                    <input type="text" th:field="*{genres}" class="form-control">
+                                    <small class="form-text text-muted">Puede agregar varios géneros. Solo separelos por "|" sin las comillas ni espacios.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rating">Clasificación:</label>
+                                    <input type="text" th:field="*{rating}" class="form-control">
+                                    <small th:if="@{#fields.hasErrors('rating')}" th:errors="*{rating}" class="form-text text-danger"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="runtimeMin">Duración:</label>
+                                    <input type="number" th:field="*{runtimeMin}" class="form-control" min="10">
+                                    <small th:if="@{#fields.hasErrors('runtimeMin')}" th:errors="*{runtimeMin}" class="form-text text-danger"></small>
+                                </div>
+                                <div class="form-group">
+                                    Estado:
+                                    <div class="form-check">
+                                        <input type="checkbox" th:field="*{active}" class="form-check-input" onchange="updateText(this)">
+                                        <label th:for="${#ids.prev('active')}" id="activeLabel" class="form-check-label" th:text="*{active}? 'Activo': 'Inactivo'"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="synopsis">Sinopsis:</label>
+                                    <textarea th:field="*{synopsis}" rows="8" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="posterUrl">URL de la imagen del poster:</label>
+                                    <input type="url" th:field="*{posterUrl}" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="trailerUrl">URL del trailer de la película:</label>
+                                    <input type="url" th:field="*{trailerUrl}" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <th:block th:replace="fragments/scripts_admin :: scripts"></th:block>
+</body>
+</html>
