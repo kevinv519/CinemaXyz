@@ -9,6 +9,11 @@
         <section th:replace="fragments/sidebar :: sidebar(active = 1)"></section>
         <section id="page-content-wrapper">
             <div class="container-fluid px-md-5 pt-md-4">
+                <div th:if="${success != null}">
+                    <div class="alert mb-2" th:classappend="${success}? alert-success : alert-warning" th:text="${message}">
+                        Mensaje
+                    </div>
+                </div>
                 <div class="row mt-5">
                     <div class="col">
                         <h1>Películas</h1>
@@ -41,7 +46,7 @@
                                     <a th:href="@{/admin/movies/edit/{id}(id=${film.id})}" class="btn btn-outline-info" title="Editar">
                                         <i class="far fa-edit"></i> Editar
                                     </a>
-                                    <a th:href="@{/admin/movies/set-status/{id}(id=${film.id})}" class="btn" th:classappend="${film.active}? 'btn-outline-danger': 'btn-outline-success'" title="Eliminar">
+                                    <a th:href="@{/admin/movies/activate/{id}(id=${film.id})}" class="btn" th:classappend="${film.active}? 'btn-outline-danger': 'btn-outline-success'" onclick="return confirm('¿Está seguro de cambiar el estado?')">
                                         <i class="far fa-check-square"></i> <span th:text="${film.active}? 'Desactivar' : 'Activar'"></span>
                                     </a>
                                 </td>
@@ -52,5 +57,7 @@
             </div>
         </section>
     </div>
+
+    <th:block th:replace="fragments/scripts_admin :: scripts"></th:block>
 </body>
 </html>

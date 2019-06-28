@@ -3,6 +3,7 @@ package com.uca.capas.service;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -46,7 +47,8 @@ public class FilmServiceImpl implements FilmService {
 
 	@Override
 	public Film getMovie(Integer id) throws DataAccessException {
-		return filmRepo.getOne(id);
+		Optional<Film> optfilm = filmRepo.findById(id); 
+		return optfilm.isPresent()? optfilm.get() : null;
 	}
 
 	@Override

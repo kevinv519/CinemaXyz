@@ -10,14 +10,10 @@
         <section id="page-content-wrapper">
             <div class="container-fluid px-5 py-4">
                 <div class="container">
-                    <div th:if="${success != null}">
-                        <div class="alert mb-2" th:classappend="${success}? alert-success : alert-warning" th:text="${message}">
-                            Mensaje
-                        </div>
-                    </div>
                     <h1 th:text="|${action} película|" class=" mt-4 mb-3"></h1>
                     <form th:action="@{/admin/movies/save}" th:object="${film}" method="POST">
                         <div class="row">
+                            <input type="hidden" th:field="*{id}">
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label for="title">Título:</label>
